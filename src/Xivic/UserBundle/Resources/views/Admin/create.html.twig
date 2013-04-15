@@ -1,0 +1,71 @@
+{% extends 'XivicUserBundle::layout.html.twig' %}
+
+{% block body %}
+    {% form_theme form _self %}
+	{% block integer_widget %}
+		<div class="form_item">
+			{% set type = 'text' %}
+			{{ block('field_widget') }}
+		</div>
+	{% endblock %}
+    <div class="block">
+        {% block content %}
+            <a href="{{ path('xivic_admin') }}">Lista Contacte</a>
+            <br />
+            <br />
+            <form action="{{ path('xivic_create') }}" method="post" {{ form_enctype(form) }}>
+                <div class="form_item">
+                    <div class='form_label'>
+                        {{ form_label(form.nume) }}
+                    </div>
+                    <div class='form_errors'>
+                        {{ form_errors(form.nume) }}
+                    </div>
+                    <div class='form_input'>
+                        {{ form_widget(form.nume, { 'attr': {'class': 'form_input_format'} }) }}
+                    </div>
+                </div>		
+                
+                <div class="form_item">
+                    <div class='form_label'>
+                        {{ form_label(form.prenume) }}
+                    </div>
+                    <div class='form_errors'>
+                        {{ form_errors(form.prenume) }}
+                    </div>
+                    <div class='form_input'>
+                        {{ form_widget(form.prenume, { 'attr': {'class': 'form_input_format'} }) }}
+                    </div>
+                </div>
+                
+                <div class="form_item">
+                    <div class='form_label'>
+                        {{ form_label(form.telefon) }}
+                    </div>
+                    <div class='form_errors'>
+                        {{ form_errors(form.telefon) }}
+                    </div>
+                    <div class='form_input'>
+                        {{ form_widget(form.telefon, { 'attr': {'class': 'form_input_format'} }) }}
+                    </div>
+                </div>
+                
+                <div class="form_item">
+                    <div class='form_label'>
+                        {{ form_label(form.adresa) }}
+                    </div>
+                    <div class='form_errors'>
+                        {{ form_errors(form.adresa) }}
+                    </div>
+                    <div class='form_input'>
+                        {{ form_widget(form.adresa, { 'attr': {'class': 'form_textarea_format'} }) }}
+                    </div>
+                </div>
+                <div id="submit_form"><input type="submit" value="Submit" /></div>
+            </form>
+            {% block fos_user_content %}{% endblock %}
+        {% endblock %}
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,12 @@
+parameters:
+#    xivic_user.example.class: Xivic\UserBundle\Example
+
+services:
+#    xivic_user.example:
+#        class: %xivic_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    xivic_user.registration.form.type:
+        class: Xivic\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: xivic_user_registration }

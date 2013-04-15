@@ -1,0 +1,34 @@
+{% extends '::base.html.twig' %}
+
+{% block title 'Symfony' %}
+
+{% block body %}
+
+    <div class="block">
+        {% block content %}
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {% if contacte %}
+                    <h1>Contactele mele:</h1>
+                    <br />
+                    {% for key,contact in contacte %}
+                        <div class="contact">
+                            <div>#{{ key+1 }}</div>
+                            <div>{{ contact.nume }}</div>
+                            <div>{{ contact.prenume }}</div>
+                            <div>{{ contact.telefon }}</div>
+                            <div>{{ contact.adresa }}</div>
+                        </div>
+                        <br />
+                    {% endfor %}
+                {% else %}
+                    <h1>Nu aveti contacte</h1>
+                {% endif %}
+            {% else %}
+                <h1><a href="{{ path('xivic_admin') }}">Login</a> to view contacts</h1>
+            {% endif %}
+            
+        {% endblock %}
+        {% block fos_user_content %}{% endblock %}
+    </div>
+
+{% endblock %}

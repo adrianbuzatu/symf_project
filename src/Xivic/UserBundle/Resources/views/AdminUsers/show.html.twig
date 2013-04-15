@@ -1,0 +1,31 @@
+{% extends 'XivicUserBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="block">
+        {% block content %}
+            <a href="{{ path('xivic_user_create') }}">Adauga Utilizator Backend</a>
+            <br />
+            <br />
+            {% if users %}
+                <h1>Utilizatori mele:</h1>
+                <br />
+                {% for item in users %}
+                    <div class="contact">
+                        <a href="{{ path('xivic_user_delete', {'id':item.id}) }}">Sterge utilizator</a>
+                        <div> <a href="{{ path('xivic_user_edit', {'id':item.id}) }}">#{{ loop.index }}</a></div>
+                        <div>{{ item.username }}</div>
+                        <div>{{ item.email }}</div>
+                        <div>{{ item.roles|join(', ') }}</div>
+                        
+                    </div>
+                    <br />
+                {% endfor %}
+            {% else %}
+                <h1>Nu aveti utilizatori</h1>
+            {% endif %}
+            
+        {% endblock %}
+    </div>
+
+{% endblock %}

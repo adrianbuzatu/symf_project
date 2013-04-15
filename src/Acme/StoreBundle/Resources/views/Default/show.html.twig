@@ -1,0 +1,8 @@
+Product found: {{ dump(product) }}
+{% for prod in product %}
+    <p>Id {{ prod.id }}</p>
+    <p>Name {{ prod.name }}</p>
+    <p>Price {{ prod.price }}</p>
+    <p>Description {{ prod.description }}</p>
+    <br />
+{% endfor %}

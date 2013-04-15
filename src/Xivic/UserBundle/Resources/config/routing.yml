@@ -1,0 +1,24 @@
+xivic_user_homepage:
+    pattern:  /
+    defaults: { _controller: XivicUserBundle:Default:index }
+xivic_admin:
+    pattern:  /admin/
+    defaults: { _controller: XivicUserBundle:Admin:index }
+xivic_create:
+    pattern:  /admin/create
+    defaults: { _controller: XivicUserBundle:Admin:create }
+xivic_delete:
+    pattern:  /admin/delete/{id}
+    defaults: { _controller: XivicUserBundle:Admin:delete }
+xivic_adminusers:
+    pattern: /admin_users/
+    defaults: { _controller: XivicUserBundle:AdminUsers:index }
+xivic_user_create:
+    pattern: /admin_users/create
+    defaults: { _controller: XivicUserBundle:AdminUsers:create }
+xivic_user_delete:
+    pattern: /admin_users/delete/{id}
+    defaults: { _controller: XivicUserBundle:AdminUsers:delete }
+xivic_user_edit:
+    pattern: /admin_users/edit/{id}
+    defaults: { _controller: XivicUserBundle:AdminUsers:edit }

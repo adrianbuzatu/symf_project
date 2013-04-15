@@ -1,0 +1,31 @@
+{% extends 'XivicUserBundle::layout.html.twig' %}
+
+{% block body %}
+
+    <div class="block">
+        {% block content %}
+            <a href="{{ path('xivic_create') }}">Adauga Contact</a>
+            <br />
+            <br />
+            {% if contacte %}
+                <h1>Contactele mele:</h1>
+                <br />
+                {% for key,contact in contacte %}
+                    <div class="contact">
+                        <a href="{{ path('xivic_delete', {'id':contact.id}) }}">Sterge acest contact</a>
+                        <div>#{{ key+1 }}</div>
+                        <div>{{ contact.nume }}</div>
+                        <div>{{ contact.prenume }}</div>
+                        <div>{{ contact.telefon }}</div>
+                        <div>{{ contact.adresa }}</div>
+                    </div>
+                    <br />
+                {% endfor %}
+            {% else %}
+                <h1>Nu aveti contacte</h1>
+            {% endif %}
+            
+        {% endblock %}
+    </div>
+
+{% endblock %}

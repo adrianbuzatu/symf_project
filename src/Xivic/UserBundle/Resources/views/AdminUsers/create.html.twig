@@ -1,0 +1,99 @@
+{% extends 'XivicUserBundle::layout.html.twig' %}
+
+{% block body %}
+    {% form_theme form _self %}
+	{% block integer_widget %}
+		<div class="form_item">
+			{% set type = 'text' %}
+			{{ block('field_widget') }}
+		</div>
+	{% endblock %}
+    <div class="block">
+        {% block content %}
+            <a href="{{ path('xivic_adminusers') }}">Lista Utilizatori</a>
+            <br />
+            <br />
+            <form action="{{ path('xivic_user_create') }}" class="admin_form" method="post" {{ form_enctype(form) }}>
+                <div class="form_item">
+                    <div class='form_label'>
+                        {{ form_label(form.username) }}
+                    </div>
+                    <div class='form_errors'>
+                        {{ form_errors(form.username) }}
+                    </div>
+                    <div class='form_input'>
+                        {{ form_widget(form.username, { 'attr': {'class': 'form_input_format'} }) }}
+                    </div>
+                </div>		
+                
+                <div class="form_item">
+                    <div class='form_label'>
+                        {{ form_label(form.email) }}
+                    </div>
+                    <div class='form_errors'>
+                        {{ form_errors(form.email) }}
+                    </div>
+                    <div class='form_input'>
+                        {{ form_widget(form.email, { 'attr': {'class': 'form_input_format'} }) }}
+                    </div>
+                </div>
+                
+                <div class="form_item">
+                    <div class='form_label'>
+                        {{ form_label(form.password) }}
+                    </div>
+                    <div class='form_errors'>
+                        {{ form_errors(form.password) }}
+                    </div>
+                    <div class='form_input'>
+                        {{ form_widget(form.password, { 'attr': {'class': 'form_input_format'} }) }}
+                    </div>
+                </div>
+                
+                <div class="form_item">
+                    <div class='form_label'>
+                        {{ form_label(form.passconf) }}
+                    </div>
+                    <div class='form_errors'>
+                        {{ form_errors(form.passconf) }}
+                    </div>
+                    <div class='form_input'>
+                        {{ form_widget(form.passconf, { 'attr': {'class': 'form_input_format'} }) }}
+                    </div>
+                </div>
+				<fieldset>
+					<legend>Roluri</legend>
+					<div class="form_item">
+						<div class='form_label'>
+							{{ form_label(form.role_admin) }}
+						</div>
+						<div class='form_errors'>
+							{{ form_errors(form.role_admin) }}
+						</div>
+						<div class='form_input'>
+							{{ form_widget(form.role_admin, { 'attr': {'class': ''} }) }}
+						</div>
+					</div>
+					
+					<div class="form_item">
+						<div class='form_label'>
+							{{ form_label(form.role_user) }}
+						</div>
+						<div class='form_errors'>
+							{{ form_errors(form.role_user) }}
+						</div>
+						<div class='form_input'>
+							{{ form_widget(form.role_user, { 'attr': {'class': ''} }) }}
+						</div>
+					</div>
+				</fieldset>
+				
+				
+                <div id="submit_form"><input type="submit" value="Submit" /></div>
+            </form>
+            {% block fos_user_content %}{% endblock %}
+        {% endblock %}
+    </div>
+
+{% endblock %}
+
