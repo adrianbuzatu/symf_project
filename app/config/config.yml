@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -72,3 +72,8 @@ fos_user:
     registration:
         form:
             type: xivic_user_registration
+services:
+    stringsext.twig.extension.stringextension:
+        class: Xivic\UserBundle\Extension\StringExtension 
+        tags:
+            -  { name: twig.extension }

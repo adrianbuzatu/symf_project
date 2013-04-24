@@ -1,14 +1,17 @@
 {% extends 'XivicUserBundle::layout.html.twig' %}
 
 {% block body %}
-
+    
     <div class="block">
         {% block content %}
+            <div id="filter_users">
+                <a href="{{ path('xivic_adminusers', {'role': '1'}) }}">Show Users</a>&nbsp;|&nbsp;<a href="{{ path('xivic_adminusers', {'role': '2'}) }}">Show Admins</a>
+            </div>
             <a href="{{ path('xivic_user_create') }}">Adauga Utilizator Backend</a>
             <br />
             <br />
             {% if users %}
-                <h1>Utilizatori mele:</h1>
+                <h1>Utilizatori:</h1>
                 <br />
                 {% for item in users %}
                     <div class="contact">
@@ -16,8 +19,8 @@
                         <div> <a href="{{ path('xivic_user_edit', {'id':item.id}) }}">#{{ loop.index }}</a></div>
                         <div>{{ item.username }}</div>
                         <div>{{ item.email }}</div>
-                        <div>{{ item.roles|join(', ') }}</div>
-                        
+                        <div>{{ item.roles|join(', ')|replace('_', ' ')|replace('ROLE_', '')|ucwords }}</div>
+                        <!--<div>{{ dump(item.roles) }}</div>-->
                     </div>
                     <br />
                 {% endfor %}
