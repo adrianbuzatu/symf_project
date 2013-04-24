@@ -25,7 +25,7 @@ class AdminUsersController extends Controller
 			$roles_array = array(
 				'1' => 'ROLE_USER',
 				'2' => 'ROLE_ADMIN',
-				'3' => 'ROLE_SUPERADMIN'
+				'3' => 'ROLE_SUPER_ADMIN'
 			);
 			$target = $roles_array[$role_filter];
 			$users = $this->getDoctrine()->getEntityManager()
