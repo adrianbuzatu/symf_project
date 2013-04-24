@@ -7,12 +7,12 @@
     <div class="block">
         {% block content %}
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {% if contacte %}
+                {% if contacte is defined and contacte %}
                     <h1>Contactele mele:</h1>
                     <br />
                     {% for key,contact in contacte %}
                         <div class="contact">
-                            <div>#{{ key+1 }}</div>
+                            <div>#{{ loop.index }}</div>
                             <div>{{ contact.nume }}</div>
                             <div>{{ contact.prenume }}</div>
                             <div>{{ contact.telefon }}</div>
@@ -21,7 +21,9 @@
                         <br />
                     {% endfor %}
                 {% else %}
-                    <h1>Nu aveti contacte</h1>
+                    {% if contacte is defined %}
+                        <h1>Nu aveti contacte</h1>
+                    {% endif %}
                 {% endif %}
             {% else %}
                 <h1><a href="{{ path('xivic_admin') }}">Login</a> to view contacts</h1>
