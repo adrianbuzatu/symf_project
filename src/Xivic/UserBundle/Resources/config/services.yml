@@ -7,6 +7,6 @@ services:
 #        arguments: [@service_id, "plain_value", %parameter%]
     xivic_user.registration.form.type:
         class: Xivic\UserBundle\Form\Type\RegistrationFormType
-        arguments: [%fos_user.model.user.class%]
+        arguments: [%fos_user.model.user.class%, %security.role_hierarchy.roles%]
         tags:
             - { name: form.type, alias: xivic_user_registration }
